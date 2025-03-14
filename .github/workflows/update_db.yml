@@ -72,25 +72,25 @@ jobs:
         git config --global credential.useHttpPath true
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "GitHub Actions"
-        GIT_LFS_SKIP_SMUDGE=1 git clone https://user:$HF_TOKEN@huggingface.co/spaces/thanhtungvudata/Cinemoodv3 Cinemoodv3
-        cd Cinemoodv3
+        GIT_LFS_SKIP_SMUDGE=1 git clone https://user:$HF_TOKEN@huggingface.co/spaces/thanhtungvudata/CineMood_Chatbot CineMood_Chatbot
+        cd CineMood_Chatbot
         git lfs pull
 
     - name: Remove Old ChromaDB and Movie Files in Hugging Face Space
       run: |
-        cd Cinemoodv3
+        cd CineMood_Chatbot
         rm -rf chroma_db/  # ✅ Remove old ChromaDB to prevent duplicates
         rm -f trending_movies.json movie_embeddings.json  # Remove old movie files
 
     - name: Copy Updated Data to Hugging Face Repo
       run: |
-        mkdir -p Cinemoodv3/chroma_db  # Ensure target directory exists
-        rsync -av --ignore-missing-args --exclude='.git' ./chroma_db/ Cinemoodv3/chroma_db/
-        rsync -av --exclude='.git' trending_movies.json movie_embeddings.json Cinemoodv3/
+        mkdir -p CineMood_Chatbot/chroma_db  # Ensure target directory exists
+        rsync -av --ignore-missing-args --exclude='.git' ./chroma_db/ CineMood_Chatbot/chroma_db/
+        rsync -av --exclude='.git' trending_movies.json movie_embeddings.json CineMood_Chatbot/
 
     - name: Configure Git LFS for Large Files
       run: |
-        cd Cinemoodv3
+        cd CineMood_Chatbot
         git lfs track "chroma_db/chroma.sqlite3"
         git add .gitattributes
 
@@ -98,7 +98,7 @@ jobs:
       env:
         HF_TOKEN: ${{ secrets.HF_TOKEN }}
       run: |
-        cd Cinemoodv3
+        cd CineMood_Chatbot
         git add chroma_db/ trending_movies.json movie_embeddings.json
         git commit -m "Auto-update from GitHub" || echo "No changes to commit"
-        git push https://user:$HF_TOKEN@huggingface.co/spaces/thanhtungvudata/Cinemoodv3.git HEAD:main
+        git push https://user:$HF_TOKEN@huggingface.co/spaces/thanhtungvudata/CineMood_Chatbot.git HEAD:main
