@@ -1,6 +1,6 @@
-# CineMood_v3 🎬🎭
+# CineMood_Chatbot 🎬🎭
 
-**CineMood_v3** is a movie recommendation system that leverages embeddings and a vector database to suggest movies based on user preferences, trends, and semantic similarity. The project incorporates the **Retrieval-Augmented Generation (RAG) method** to enhance movie recommendations by dynamically retrieving relevant information before generating responses.
+**CineMood_Chatbot** is a movie recommendation system that leverages embeddings and a vector database to suggest movies based on user preferences, trends, and semantic similarity. The project incorporates the **Retrieval-Augmented Generation (RAG) method** to enhance movie recommendations by dynamically retrieving relevant information before generating responses.
 
 ## 🚀 Demo
 
