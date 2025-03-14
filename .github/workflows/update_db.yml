@@ -1,0 +1,104 @@
+name: Auto-Update Vector Database Weekly & Deploy to Hugging Face
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"  # Runs every Monday at midnight UTC
+  workflow_dispatch:  # Allows manual trigger from GitHub Actions
+
+jobs:
+  update-database:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+
+    - name: Install Dependencies
+      run: pip install -r requirements.txt
+
+    - name: Remove Old ChromaDB Before Storing New Data
+      run: |
+        rm -rf chroma_db/  # Remove old ChromaDB files
+        mkdir -p chroma_db  # Ensure the directory is recreated
+
+    - name: Fetch Trending Movies
+      env:
+        TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+      run: python fetch_movies.py
+
+    - name: Generate Movie Embeddings
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: python generate_embeddings.py
+
+    - name: Store Embeddings in ChromaDB
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: python store_in_chromadb.py
+
+    - name: Commit and Push Updates to GitHub
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+        git add trending_movies.json movie_embeddings.json chroma_db/
+        git commit -m "Auto-update movies database [skip ci]" || echo "No changes to commit"
+        git push origin main
+
+  deploy-to-huggingface:
+    needs: update-database
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Install and Configure Git LFS
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y git-lfs
+        git lfs install
+
+    - name: Clone Hugging Face Space
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      run: |
+        git config --global credential.helper store
+        echo "https://user:$HF_TOKEN@huggingface.co" > ~/.git-credentials
+        git config --global credential.useHttpPath true
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "GitHub Actions"
+        GIT_LFS_SKIP_SMUDGE=1 git clone https://user:$HF_TOKEN@huggingface.co/spaces/thanhtungvudata/Cinemoodv3 Cinemoodv3
+        cd Cinemoodv3
+        git lfs pull
+
+    - name: Remove Old ChromaDB and Movie Files in Hugging Face Space
+      run: |
+        cd Cinemoodv3
+        rm -rf chroma_db/  # ✅ Remove old ChromaDB to prevent duplicates
+        rm -f trending_movies.json movie_embeddings.json  # Remove old movie files
+
+    - name: Copy Updated Data to Hugging Face Repo
+      run: |
+        mkdir -p Cinemoodv3/chroma_db  # Ensure target directory exists
+        rsync -av --ignore-missing-args --exclude='.git' ./chroma_db/ Cinemoodv3/chroma_db/
+        rsync -av --exclude='.git' trending_movies.json movie_embeddings.json Cinemoodv3/
+
+    - name: Configure Git LFS for Large Files
+      run: |
+        cd Cinemoodv3
+        git lfs track "chroma_db/chroma.sqlite3"
+        git add .gitattributes
+
+    - name: Commit and Push Updates to Hugging Face
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      run: |
+        cd Cinemoodv3
+        git add chroma_db/ trending_movies.json movie_embeddings.json
+        git commit -m "Auto-update from GitHub" || echo "No changes to commit"
+        git push https://user:$HF_TOKEN@huggingface.co/spaces/thanhtungvudata/Cinemoodv3.git HEAD:main
