@@ -5,8 +5,8 @@
 
 ## 🚀 Demo
 
-🎭 **Try the app:** [CineMood Chatbot: Mood-Based Movie Recommendation](https://huggingface.co/spaces/thanhtungvudata/CineMood_Chatbot)  
-📝 **Blog post:** [Building a Chatbot for Trending Movie Recommendation](https://medium.com/@tungvu_37498/building-a-rag-mood-based-trending-movie-recommendation-app-8bb9ea17213d)
+🎭 **Try the app:** [CineMood Chatbot: Discover Films That Match Your Mood!](https://huggingface.co/spaces/thanhtungvudata/CineMood_Chatbot)  
+📝 **Blog post:** [Building a Chatbot for Mood-Based Trending Movie Recommendation](https://medium.com/@tungvu_37498/building-a-rag-mood-based-trending-movie-recommendation-app-8bb9ea17213d)
 
 ---
 
