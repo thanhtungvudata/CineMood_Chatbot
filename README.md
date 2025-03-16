@@ -4,7 +4,7 @@
 
 ## 🚀 Demo
 
-🎭 **Try the app:** [CineMoodv3: RAG Mood-Based Movie Recommendation](https://huggingface.co/spaces/thanhtungvudata/cinemoodv3)  
+🎭 **Try the app:** [CineMood Chatbot: Mood-Based Movie Recommendation](https://huggingface.co/spaces/thanhtungvudata/CineMood_Chatbot)  
 📝 **Blog post:** [Building a RAG Mood-Based Trending Movie Recommendation App](https://medium.com/@tungvu_37498/building-a-rag-mood-based-trending-movie-recommendation-app-8bb9ea17213d)
 
 ---
