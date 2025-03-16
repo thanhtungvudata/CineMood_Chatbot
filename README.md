@@ -128,13 +128,7 @@ See [LICENSE](LICENSE) for full details.
 ## 💡 Future Enhancements
 1. **User Feedback Integration**  
    Allow users to rate or save favorite movies, improving recommendations over time.
-2. **Additional Metadata**  
-   Integrate cast, crew, and genre data for more refined search and filtering.
-3. **Model Fine-Tuning**  
-   Experiment with different embedding models or fine-tune existing ones for higher recommendation accuracy.
-4. **Extended Deployment Options**  
-   Deploy the app to platforms like AWS, Heroku, or Hugging Face Spaces for broader accessibility.
-5. **Advanced RAG Enhancements**  
+2. **Advanced RAG Enhancements**  
    Improve Retrieval-Augmented Generation by incorporating user preferences and contextual metadata.
 
 ---
