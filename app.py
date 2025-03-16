@@ -382,11 +382,11 @@ def run_app():
 
     # Add a subtitle and display the available genres in a formatted list.
     st.markdown("Welcome to CineMood Chatbot! 🤖")
-    st.markdown("Some **sample moods** you can use:")
+    st.write("CineMood Chatbot will help you to get personalized movie recommendations based on your mood and preferences (i.e., genres, runtime, release date, production country, and production company).")
+    st.markdown("To help you refine your movie search, here are some **sample moods** you might use:")
     st.markdown("- Happy, excited, grateful, hopeful, loving, proud, sad, lonely, hopeless, bored, guilty, tired, angry, frustrated, jealous, disgusted, anxious, fearful, overwhelmed, surprised, confused, indecisive, bittersweet, thoughtful, etc.")
-    st.markdown("To help you refine your movie search, here are **available genres** in my database:")
+    st.markdown("Here are **available genres** in my database:")
     st.markdown("- " + ", ".join(genres_list))
-    st.write("Chat with the bot to get personalized movie recommendations based on your mood and preferences (i.e., genres, runtime, release date, production country, and production company).")
     st.write("Some sample queries you can try:")
     st.write("- I'm feeling happy and want to watch a joyful movie from genre music after 2020.")
     st.write("- I'm feeling bored and want to watch some movies before 2020 with runtime more than 120 minutes.")
