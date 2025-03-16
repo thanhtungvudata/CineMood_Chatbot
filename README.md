@@ -1,42 +1,35 @@
 # CineMood_Chatbot 🎬🎭
 
-**CineMood_Chatbot** is a movie recommendation system that leverages embeddings and a vector database to suggest movies based on user preferences, trends, and semantic similarity. The project incorporates the **Retrieval-Augmented Generation (RAG) method** to enhance movie recommendations by dynamically retrieving relevant information before generating responses.
+**CineMood_Chatbot** is a web-based chatbot recommending trending movies based on users' moods and preferences. It fetches the latest movie data from external APIs, generates embeddings for semantic search, and uses a vector database to provide contextually relevant movie suggestions.
+
 
 ## 🚀 Demo
 
 🎭 **Try the app:** [CineMood Chatbot: Mood-Based Movie Recommendation](https://huggingface.co/spaces/thanhtungvudata/CineMood_Chatbot)  
-📝 **Blog post:** [Building a RAG Mood-Based Trending Movie Recommendation App](https://medium.com/@tungvu_37498/building-a-rag-mood-based-trending-movie-recommendation-app-8bb9ea17213d)
+📝 **Blog post:** [Building a Chatbot for Trending Movie Recommendation](https://medium.com/@tungvu_37498/building-a-rag-mood-based-trending-movie-recommendation-app-8bb9ea17213d)
 
 ---
 
 ## ✨ Overview
-CineMood_v3 fetches trending movie data from public sources, generates vector embeddings for each movie, and stores those embeddings in a ChromaDB instance for fast similarity-based lookups. A Streamlit web application provides an interactive user interface to browse and discover movies based on various criteria.
+This project combines **Retrieval-Augmented Generation (RAG)** with an NLP-based chatbot to provide movie recommendations tailored to users’ moods and interests. By continuously fetching trending movies, creating vector embeddings, and storing them in a ChromaDB instance, the chatbot can quickly retrieve relevant information and generate personalized suggestions.
 
-This project applies **RAG (Retrieval-Augmented Generation)** to improve recommendation accuracy. By combining a retrieval system (ChromaDB) with an AI-based generation model, the app provides more contextual and relevant movie recommendations based on user queries.
+Key points:
+
+- **RAG Method**: Dynamically retrieves relevant movie details before generating responses, improving recommendation accuracy.
+- **Semantic Search**: Uses embeddings to match user queries (e.g., "I want a thrilling movie") with movie overviews and metadata.
+- **Streamlit Web Interface**: Offers an interactive chatbot experience, letting users ask for recommendations, browse trending titles, and discover new films.
 
 ---
 
 ## 🚀 Features
-1. **Fetch latest movies** 📽️  
-   Retrieves trending movies from online sources (e.g., TMDB API).
 
-2. **Generate embeddings** 🧠  
-   Uses NLP techniques (e.g., OpenAI embeddings) to create vector representations of movie overviews/descriptions.
-
-3. **Store and search efficiently** 🔍  
-   Utilizes [ChromaDB](https://docs.trychroma.com/) to manage and query embeddings at scale.
-
-4. **RAG-Based Recommendations** 🔗  
-   Enhances recommendations by retrieving relevant movie descriptions and generating personalized suggestions.
-
-5. **Auto-update database** 🔄  
-   Automated GitHub Actions keep the movie data and embeddings fresh.
-
-6. **Streamlit-based Web App** 🌐  
-   Offers a user-friendly interface to browse, search, and discover movie recommendations.
-
-7. **Deploy on Hugging Face Spaces** 🚀  
-   Easily accessible through [Hugging Face Spaces](https://huggingface.co/spaces/) for public use.
+1. **Trending Movie Fetch**: Automatically pulls the latest trending movie data (e.g., from TMDB API).  
+2. **Mood-Based Recommendations**: Uses user input about mood/preference to refine recommendations.  
+3. **Embeddings & Vector Database**: Generates embeddings (e.g., using OpenAI) and stores them in [ChromaDB](https://docs.trychroma.com/) for efficient retrieval.  
+4. **RAG Integration**: Combines retrieval of relevant data with a language model for more accurate and context-aware recommendations.  
+5. **Continuous Updates**: GitHub Actions keep movie data and embeddings current without manual intervention.  
+6. **User-Friendly UI**: Streamlit-based chatbot interface for conversational recommendations.  
+7. **Deployment on Hugging Face**: Easily accessible on [Hugging Face Spaces](https://huggingface.co/spaces/), enabling quick demos and sharing.
 
 ---
 
@@ -64,8 +57,8 @@ CineMood_v3
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/thanhtungvudata/CineMood_v3.git
-   cd CineMood_v3
+   git clone https://github.com/thanhtungvudata/CineMood_Chatbot.git
+   cd CineMood_Chatbot
    ```
 
 2. **Create and activate a virtual environment** (recommended):
