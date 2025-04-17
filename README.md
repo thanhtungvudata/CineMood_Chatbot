@@ -1,6 +1,6 @@
 # CineMood_Chatbot 🎬🎭
 
-**CineMood_Chatbot** is a web-based chatbot recommending trending movies based on users' moods and preferences. It fetches the latest movie data from external APIs, generates embeddings for semantic search, and uses a vector database to provide contextually relevant movie suggestions.
+**CineMood_Chatbot** is a web-based chatbot recommending trending movies based on users' moods and preferences. It fetches the latest movie data from external APIs, generates embeddings for semantic search, and uses a vector database to provide contextually relevant movie suggestions. 
 
  
 ## 🚀 Demo
