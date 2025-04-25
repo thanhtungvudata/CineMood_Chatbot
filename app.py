@@ -6,7 +6,7 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from config import OPENAI_API_KEY
 import requests
-import base64
+import base64 
 
 def run_app():
 
