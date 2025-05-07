@@ -15,9 +15,9 @@ This project combines **Retrieval-Augmented Generation (RAG)** with an NLP-based
 
 Key points:
 
-- **RAG Method**: Dynamically retrieves relevant movie details before generating responses, improving recommendation accuracy.
-- **Semantic Search**: Uses embeddings to match user queries (e.g., "I want a thrilling movie") with movie overviews and metadata.
-- **Streamlit Web Interface**: Offers an interactive chatbot experience, letting users ask for recommendations, browse trending titles, and discover new films.
+- **RAG Method**: Dynamically retrieve relevant movie details before generating responses, improving recommendation accuracy.
+- **Semantic Search**: Use embeddings to match user queries (e.g., "I want a thrilling movie") with movie overviews and metadata.
+- **Streamlit Web Interface**: Offer an interactive chatbot experience, letting users ask for recommendations, browse trending titles, and discover new films.
 
 ---
 
