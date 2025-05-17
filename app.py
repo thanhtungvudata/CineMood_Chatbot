@@ -19,7 +19,7 @@ def run_app():
     vector_store = Chroma(
         persist_directory=chroma_path,
         embedding_function=embedding_model,
-        collection_name="movies"
+        collection_name="movies" 
     )
 
     valid_moods = [
@@ -65,7 +65,7 @@ def run_app():
         llm=llm,
         retriever=retriever,
         memory=memory,
-        verbose=True
+        verbose=True 
     )
 
     # -------------------------------------------
@@ -106,7 +106,7 @@ def run_app():
         # print(f"mood candidate is {mood_candidate}")
         if mood_candidate in valid_moods:
             return mood_candidate
-        return None
+        return None 
 
     def detect_genre(user_input, valid_moods, genres_list):
         prompt = (
